@@ -1,0 +1,180 @@
+
+:root{
+    --text-color: white;
+    --bg-url: url(/assets/imagens/bg-mobile.jpg);
+    --border-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --hight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg: url(/assets/imagens/moon-stars.svg);
+}
+
+.light{
+    --text-color: black;
+    --bg-url: url(/assets/imagens/bg-mobile-light.jpg);
+    --border-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --hight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg: url(/assets/imagens/sun.svg)
+}
+
+body{
+    /* background-image: url(/assets/imagens/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover; */
+
+    /* shorthand */
+    background: var(--bg-url) no-repeat top center/cover;
+    height: 100vh;
+   
+}
+
+.container{
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0 ;
+    padding: 0 24px;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px; 
+}
+
+.profile img{
+    width: 112px;
+    border-radius: 50%;
+}
+
+.switch{
+   position: relative;
+   width: 64px;
+   margin: 4px auto;
+}
+
+.switch button{
+    width: 32px;
+    height: 32px;
+    background: #FFF var(--switch-bg) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    animation: slide-back 0.2s;
+}
+
+.light .switch button{
+    /* right: 0;
+    left: initial; */
+
+    /* coloca o nome da animação e tira os valores acima - a propriedade forward serve para manter as propriedades finais que definiu na animação*/
+    animation: slide-in 0.2s forwards;   
+}
+
+.switch button:hover{
+    outline: 5px solid var(--hight-color);
+}
+
+.switch span{
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px; 
+}
+
+.contato{
+    font-weight: 400;
+    line-height: 24px;
+    padding-top: 8px;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 16px 24px ;
+    background: var(--surface-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(4px);
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+/* pseudo-selector */
+ul li a:hover{
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+/* links social */
+.social{
+    display: flex;
+    justify-content: center;
+    /* gap: 16px; */
+    padding: 24px 0;
+    font-size: 24px;
+}
+
+.social a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: ease-in 0.2s;
+    border-radius: 50%;
+}
+.social a:hover{
+    background: var(--hight-color);
+}
+
+footer{
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}
+footer a:hover{
+    color: var(--border-color);
+    text-decoration: underline;
+}
+
+/* animações - dá um nome qualquer a animação e coloca de onde ela começa e onde termina */
+@keyframes slide-in{
+    from{
+        left: 0;
+    }
+    to{
+        left: 50%;
+    }
+}
+
+/* outra animação para voltar com o botão */
+@keyframes slide-back{
+    from{
+        left: 50%;
+    }
+    to{
+        left: 0;
+    }
+}
